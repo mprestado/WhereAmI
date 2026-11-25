@@ -15,7 +15,12 @@ Both layouts use the same simple hierarchy: **Goal or task list → objective �
 
 ## Get started
 
-The browser app and the Windows x64 installer can save work on your device without an account. The GitHub installer is unsigned and uses device-only storage. To sync a self-hosted web app with Windows, build both clients with the same [Supabase configuration](#configure-the-shared-backend).
+The browser app and both Windows x64 installers can save work on your device without an account. The Windows installers are unsigned.
+
+- Choose the **account sync installer** to use the same workspace on Windows and the [hosted web app](https://whereami-e6m.pages.dev/). Sign in with the same WhereAmI account on both.
+- Choose the **device-only installer** to keep a workspace local to your PC.
+
+To bring existing tasks into your account, sign in on the device that holds them and open **Account and settings → Workspace data → Copy local workspace to account**. If you want to host your own workspace, see [Supabase setup](#configure-the-shared-backend).
 
 Use the bottom arrows or dots to move between objectives. On a phone, swipe between tiles. Journey advances when you finish the current required objective. Task list keeps the selected tile in place so you can work in any order. Edit titles, optional status, and ordering through **Goal settings → Edit objectives**.
 
