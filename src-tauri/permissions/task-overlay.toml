@@ -1,0 +1,9 @@
+[[permission]]
+identifier = "open-task-overlay"
+description = "Allows the local main window to show the task overlay."
+commands.allow = ["open_task_overlay"]
+
+[[permission]]
+identifier = "task-overlay"
+description = "Allows the local task overlay to change its own state, close, and show WhereAmI."
+commands.allow = ["get_task_overlay", "set_task_overlay", "drag_task_overlay", "close_task_overlay", "show_main_window"]

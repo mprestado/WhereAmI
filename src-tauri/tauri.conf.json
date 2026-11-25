@@ -1,0 +1,81 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "WhereAmI",
+  "version": "0.5.0",
+  "identifier": "app.whereami.desktop",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://127.0.0.1:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [
+      {
+        "label": "main",
+        "title": "WhereAmI",
+        "width": 1260,
+        "height": 850,
+        "minWidth": 420,
+        "minHeight": 520,
+        "backgroundColor": "#f7faf8"
+      }
+    ],
+    "security": {
+      "csp": {
+        "default-src": "'self'",
+        "connect-src": "'self' https://*.supabase.co wss://*.supabase.co http://127.0.0.1:54321 ws://127.0.0.1:54321",
+        "img-src": "'self' blob: data:",
+        "style-src": "'self' 'unsafe-inline'",
+        "object-src": "'none'",
+        "base-uri": "'self'",
+        "form-action": "'self'"
+      },
+      "devCsp": {
+        "default-src": "'self'",
+        "script-src": "'self' 'unsafe-inline'",
+        "connect-src": "'self' ws://127.0.0.1:1420 https://*.supabase.co wss://*.supabase.co http://127.0.0.1:54321 ws://127.0.0.1:54321",
+        "img-src": "'self' blob: data:",
+        "style-src": "'self' 'unsafe-inline'",
+        "object-src": "'none'",
+        "base-uri": "'self'",
+        "form-action": "'self'"
+      },
+      "capabilities": [
+        {
+          "identifier": "desktop-main-window",
+          "platforms": ["windows"],
+          "webviews": ["main"],
+          "permissions": ["open-task-overlay"]
+        },
+        {
+          "identifier": "desktop-task-overlay",
+          "platforms": ["windows"],
+          "webviews": ["task-overlay"],
+          "permissions": ["task-overlay", "core:window:allow-start-resize-dragging"]
+        }
+      ]
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis"],
+    "category": "Productivity",
+    "useLocalToolsDir": true,
+    "shortDescription": "A calm workspace for goals and task lists",
+    "license": "MIT",
+    "resources": {
+      "../LICENSE": "LICENSE",
+      "../public/licenses/": "licenses/"
+    },
+    "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.ico"],
+    "windows": {
+      "nsis": {
+        "installMode": "currentUser",
+        "installerIcon": "icons/icon.ico",
+        "startMenuFolder": "WhereAmI"
+      }
+    }
+  }
+}

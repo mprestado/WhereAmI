@@ -1,0 +1,38 @@
+.count-control {
+  display: grid;
+  justify-items: end;
+  gap: .25rem;
+}
+
+.count-buttons {
+  display: inline-grid;
+  grid-template-columns: var(--count-button-size, 30px) auto var(--count-button-size, 30px);
+  align-items: center;
+  gap: 2px;
+  width: max-content;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding-inline: 2px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: .82rem;
+}
+
+.count-buttons > button {
+  display: grid;
+  min-height: var(--count-button-size, 30px);
+  place-items: center;
+  border-radius: 5px;
+  color: var(--accent-strong);
+  touch-action: manipulation;
+}
+
+.count-buttons > button:hover:not([aria-disabled="true"]) { background: var(--accent-soft); }
+.count-buttons > button[aria-disabled="true"] { color: var(--muted); opacity: .5; cursor: default; }
+.count-buttons[data-complete="true"] .count-value { color: var(--accent-strong); }
+.count-value { min-width: 3ch; padding-inline: .15rem; font-weight: 660; text-align: center; font-variant-numeric: tabular-nums; }
+.count-error { max-width: 17rem; color: var(--danger); font-size: .75rem; text-align: end; }
+
+@media (pointer: coarse) {
+  .count-buttons { --count-button-size: 36px; }
+}
