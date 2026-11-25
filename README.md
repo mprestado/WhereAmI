@@ -31,6 +31,33 @@ Required sub-objectives each count once. A required objective with sub-objective
 
 A count target counts as one step at the goal level. It completes when the target is reached and reopens if the count drops. A main objective with its own count target and required sub-objectives completes after both are done.
 
+## Contributing
+
+First-time and returning contributors are welcome. Bug fixes, accessibility improvements, documentation, and platform work all help make WhereAmI easier to use. If you're thinking about a new client or a significant design change, share a short plan in [GitHub Issues](https://github.com/mprestado/WhereAmI/issues) so others can weigh in or help.
+
+1. Fork WhereAmI and create a branch for your change.
+2. Keep the change focused and run the [checks](#verification) that apply to it.
+3. Open a pull request against `main`. Explain what changed, which platforms you tried, and how you verified it. For visible changes, include a screenshot or short recording.
+4. Follow up on review feedback in the same pull request.
+
+If you're new to this workflow, see [GitHub's guide to contributing to a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project).
+
+## Next milestone
+
+Bring the same WhereAmI workspace to more devices.
+
+- **Android** with a home-screen widget for seeing the current objective and checking off work without opening the full app.
+- **Linux** with a desktop app for everyday planning, quick capture, and progress tracking.
+- **macOS** with a desktop app that fits Mac workflows and syncs that same workspace.
+
+Use the tools that fit each platform. Every client should use the [same account, data model, and sync rules](supabase/README.md), including clear saved, pending, and failed states. The [progress rules](#progress-rules) should give the same result on every device, including optional work and count targets.
+
+### Keeping the design consistent
+
+Use the [current app](https://whereami-e6m.pages.dev/), [journey screenshot](docs/whereami-journey.png), and [shared theme values](src/styles.css) as references for color, type, and spacing. Keep the current objective easy to find, secondary controls tucked away, and the same words for goals, objectives, completion, and sync. Use accessible contrast, visible focus, and restrained motion that respects reduced-motion preferences.
+
+Widgets and desktop controls can follow familiar platform patterns while keeping that visual language. When changing a shared color, text style, or interaction, update the shared reference and show how the change looks on the platforms it affects. Include light and dark views when the theme changes.
+
 ## Run from source
 
 The web and Windows apps share a React and TypeScript frontend. Tauri provides the desktop windows and tray. IndexedDB stores work locally and queues account edits for optional Supabase sync.
@@ -78,7 +105,7 @@ node supabase/sync.integration.mjs
 
 To use an installed Chrome browser for the sync test, set `$env:WHEREAMI_BROWSER_CHANNEL = 'chrome'`. The sync test uses two browser sessions, Supabase client calls and PostgreSQL migrations running locally with simulated authentication. Hosted email, Realtime and Windows-to-phone sync need a separate check with a configured backend. The [browser suite](e2e/) includes older tests for layouts superseded by the carousel. See [Windows verification](src-tauri/README.md) for the native smoke test.
 
-See [the refinement plan](REFACTOR_PLAN.md) for model compatibility and progress rules. Report bugs or ideas in [GitHub Issues](https://github.com/mprestado/WhereAmI/issues).
+See [the refinement plan](REFACTOR_PLAN.md) for model compatibility and progress rules.
 
 ## License
 
